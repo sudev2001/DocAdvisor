@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Home{% endblock  %}
+{% block body %}
+
+<div class="preloader-wrapper">
+    <div class="preloader">
+    </div>
+  </div>
+
+  <section id="billboard" class="overflow-hidden">
+
+    <button class="button-prev">
+      <i class="icon icon-chevron-left"></i>
+    </button>
+    <button class="button-next">
+      <i class="icon icon-chevron-right"></i>
+    </button>
+    <div class="swiper main-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" style="background-image: url('{% static "images/banner1.jpg" %}');background-repeat: no-repeat;background-size: cover;background-position: center;">
+          <div class="banner-content">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6">
+                  <h2 class="banner-title" style="font-size:70px;">We Recommend you the best</h2>
+                  <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero ipsum enim pharetra hac.</p> -->
+                  <div class="btn-wrap">
+                    <!-- <a href="{% url 'ask_me' %}" class="btn btn-light btn-medium d-flex align-items-center" tabindex="0" name='ask_me'>ask me<i class="icon icon-arrow-io"></i>
+                    </a> -->
+
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle btn btn-light btn-medium d-flex align-items-center" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tabindex="0" name='ask_me'>
+                        Ask Me
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{% url 'ask_me' %}">DocAdvisor</a>
+                        <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Single Doctor</a>
+
+                      
+
+                      </div>
+                    </li>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="staticBackdropLabel">Get your Doctor details</h3>
+          </div>
+          <div class="modal-body">
+            <form  name="contactform" action="#" method="post" class="contact-form" style="width: 100%;">
+              {% csrf_token %}
+              <div class="form-item">
+                <label style="color: black;">Department</label>
+                <select name="department" id="id_department"  class="u-full-width bg-light" required>
+                  <option value="">Choose</option>
+                  {% for department in departments%}
+                  <option value="{{department}}">{{department}}</option>
+                  {% endfor %}
+                </select>
+                <label style="color: black;">Doctor Name</label>
+                <select name="doctorname" id="id_doctorname"  class="u-full-width bg-light" required>
+                </select>
+
+                <table class="table table-bordered mt-4">
+                  <thead>
+                    <tr id="id_thead">
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr id="id_tbody">
+                    </tr>
+                  </tbody>
+                </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </section>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+      $(document).ready(function () {
+          $('#id_department').change(function () {
+              var selectedDepartment = $(this).val();
+              if (selectedDepartment.trim() === ''){
+                alert('Please choose a department')
+                return
+              }
+              $.ajax({
+                  url: '/get_doctors/',
+                  data: {'department': selectedDepartment},
+                  dataType: 'json',
+                  success: function (data) {
+                      var doctorsSelect = $('#id_doctorname');
+                      doctorsSelect.empty();
+                      doctorsSelect.append($('<option>', {
+                          value: '',
+                          text: 'Choose'
+                      }));
+                      $.each(data.doctors, function (index, value) {
+                        
+                          doctorsSelect.append($('<option>', {
+                              value: value.id,
+                              text: value.doctorname
+                          }));
+                      });
+                  }
+              });
+          });
+
+          $('#id_doctorname').change(function () {
+            var selectedDoctor = $(this).val();
+            if (selectedDoctor.trim() === ''){
+              alert('Please select a doctor')
+              return
+            }
+            $.ajax({
+              type: 'GET',
+              url: `/get_doctor_details/${selectedDoctor}/`,
+              dataType: 'json',
+              success: function (data) {
+                var head = $('#id_thead');
+                head.empty();
+
+                head.append($('<th>').text("Name"))
+                head.append($('<th>').text("Department"))
+                head.append($('<th>').text("Experience"))
+                head.append($('<th>').text("Rank"))
+                  
+                // Iterate over the doctor details and create rows in the table
+                $.each(data, function (key, value) {
+                    var row = $('#id_tbody');
+                    row.empty();
+                    row.append($('<td>').text(value.doctorname));
+                    row.append($('<td>').text(value.department));
+                    row.append($('<td>').text(value.experience + ' years'));
+                    row.append($('<td>').text(value.rank));
+                });
+                 
+              }
+          });
+        });
+      });
+  </script>
+
+{% endblock  %}

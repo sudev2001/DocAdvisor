@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Form{% endblock title %}
+{% block body %}
+<div  style="height: 100vh;">
+  {% include "alerts.html" %}
+  <div class="d-flex justify-content-center align-items-center">
+    <form  name="contactform" action="{%url 'review_entry'%}" method="post" class="contact-form" style="width: 50%;">
+      {% csrf_token %}
+      <div class="form-item">
+        <label style="color: black;">Department</label>
+        <select name="department" id="id_department"  class="u-full-width bg-light" required>
+          <option value="">Choose</option>
+          {% for department in departments%}
+          <option value="{{department}}">{{department}}</option>
+          {% endfor %}
+        </select>
+        <label style="color: black;">Doctor Name</label>
+        <select name="doctorname" id="id_doctorname"  class="u-full-width bg-light" required>
+        </select>
+        <label style="color: black;">Review</label>
+        <textarea class="u-full-width bg-light" id="id_review" name="review" placeholder="Message" style="height: 180px;" required></textarea>
+      </div>
+      
+      <button type="submit" name="submit" class="btn btn-dark btn-full btn-medium">Submit</button>
+    </form>
+  
+  </div>
+</div>
+
+
+<!-- review_form.html -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#id_department').change(function () {
+            var selectedDepartment = $(this).val();
+            if (selectedDepartment.trim() === ''){
+              alert('Please choose a department')
+              return
+            }
+            $.ajax({
+                url: '/get_doctors/',
+                data: {'department': selectedDepartment},
+                dataType: 'json',
+                success: function (data) {
+                    var doctorsSelect = $('#id_doctorname');
+                    doctorsSelect.empty();
+                    doctorsSelect.append($('<option>', {
+                        value: '',
+                        text: 'Choose'
+                    }));
+                    $.each( data.doctors, function (index, value) {
+                        doctorsSelect.append($('<option>', {
+                            value: value.doctorname,
+                            text: value.doctorname
+                        }));
+                        console.log(value);
+                    });
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
