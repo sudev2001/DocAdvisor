@@ -16,7 +16,7 @@ joblib
 nltk
 numpy
 pandas
-pandasai==0.8.3
+pandasai
 Pillow
 psycopg
 python-decouple
