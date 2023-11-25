@@ -1,13 +1,13 @@
 datasets
 decorator
 Django
-google-ai-generativelanguage
-google-api-core
-google-auth
-google-auth-oauthlib
-google-generativeai>=0.2.2
-google-pasta
-googleapis-common-protos
+# google-ai-generativelanguage
+# google-api-core
+# google-auth
+# google-auth-oauthlib
+# google-generativeai>=0.2.2
+# google-pasta
+# googleapis-common-protos
 happytransformer
 httpcore
 httpx
