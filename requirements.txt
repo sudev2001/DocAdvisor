@@ -16,7 +16,7 @@ joblib
 nltk
 numpy
 pandas
-pandasai
+# pandasai
 Pillow
 psycopg
 python-decouple
