@@ -30,4 +30,5 @@ tensorflow
 torch
 transformers
 tzdata
+dj_database_url
 
