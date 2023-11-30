@@ -32,7 +32,8 @@ def review_entry(request):
             doctor = DoctorDetails.objects.get(doctorname=doctorname)
             doctor_id = doctor.id
             Review.objects.create(department=department, doctor_id=doctor, review=review)
-            sentiment_analysis(doctor_id,review)
+            print(doctor_id,'ididididid---->')
+            sentiment_analysis_palm(doctor_id,review)
             messages.success(request,"Review added successfully")
             return redirect('Homepage')
         except:
@@ -121,88 +122,90 @@ def sentiment_analysis(id,review):
         pass
 
 import os
-# import google.generativeai as palm
+import google.generativeai as palm
 
-# Palm_key = os.environ.get('Palm_key')
-# palm.configure(api_key=Palm_key)
-# model_id='models/text-bison-001'
+Palm_key = os.environ.get('Palm_key')
+palm.configure(api_key=Palm_key)
+model_id='models/text-bison-001'
 
-# def sentiment_analysis_palm(id,review):
-#     promt='''
-#         Do sentimental analysis of the sentence give 1 if it is positive or -1 if it is negative or 0 if it is neutral
-#         '''
-#     completion=palm.generate_text(
-#     model=model_id,
-#     prompt=f"{review}\n{promt}",
-#     temperature=0.0,
-#     max_output_tokens=1600,
-#     candidate_count=1)
-#     result=int(completion.result)
-#     print(result,'____sudev____')
-#     try:
-#         doc = DoctorDetails.objects.get(id=id)
+def sentiment_analysis_palm(id,review):
+    promt='''
+        Conduct a sentiment analysis on the sentence. Assign a score of 1 for positivity, -1 for negativity, or 0 for neutrality based on the analysis results.
+    '''
+    completion=palm.generate_text(
+    model=model_id,
+    prompt=f"{review}\n{promt}",
+    temperature=0.0,
+    max_output_tokens=1600,
+    candidate_count=1)
+    result=int(completion.result)
+    print(result,'____sudev____')
+    try:
+        doc = DoctorDetails.objects.get(id=id)
 
-#         if result == -1:
-#             doc.negative_count += 1            
-#             # doc.loc[id,['negative_count']]+=1
+        if result == -1:
+            doc.negative_count += 1            
+            # doc.loc[id,['negative_count']]+=1
 
-#         elif result == 0:
-#             doc.neutral_count +=1
-#             # doc.loc[id,['neutral_count']]+=1
+        elif result == 0:
+            doc.neutral_count +=1
+            # doc.loc[id,['neutral_count']]+=1
 
-#         else:
-#             doc.positive_count +=1
-#             # doc.loc[id,['positive_count']]+=1
+        else:
+            doc.positive_count +=1
+            # doc.loc[id,['positive_count']]+=1
         
-#         doc.total_reviews +=1
-#         # doc.loc[id,['total_reviews']]+=1
+        doc.total_reviews +=1
+        # doc.loc[id,['total_reviews']]+=1
 
-#         doc.rank_math = (doc.positive_count - doc.negative_count)/doc.total_reviews
-#         # doc.loc[id,['rank_math']]= (doc.loc[id]['positive_count'] - doc.loc[id]['negative_count'])/doc.loc[id]['total_reviews']
+        doc.rank_math = (doc.positive_count - doc.negative_count)/doc.total_reviews
+        # doc.loc[id,['rank_math']]= (doc.loc[id]['positive_count'] - doc.loc[id]['negative_count'])/doc.loc[id]['total_reviews']
         
-#         doc.save()
+        doc.save()
 
-#         # Define the raw SQL query with the correct table name
-#         sql_query = """
-#         WITH ranked_doctors AS (
-#             SELECT
-#                 doctorname,
-#                 department,
-#                 experience,
-#                 positive_count,
-#                 negative_count,
-#                 neutral_count,
-#                 total_reviews,
-#                 rank_math,
-#                 RANK() OVER (PARTITION BY department ORDER BY rank_math DESC) AS department_rank
-#             FROM
-#                 chatbot_doctordetails
-#         )
-#         UPDATE chatbot_doctordetails AS d
-#         SET rank = r.department_rank
-#         FROM ranked_doctors r
-#         WHERE d.doctorname = r.doctorname AND d.department = r.department;
-#         """
+        # Define the raw SQL query with the correct table name
+        sql_query = """
+        WITH ranked_doctors AS (
+            SELECT
+                doctorname,
+                department,
+                experience,
+                positive_count,
+                negative_count,
+                neutral_count,
+                total_reviews,
+                rank_math,
+                RANK() OVER (PARTITION BY department ORDER BY rank_math DESC) AS department_rank
+            FROM
+                chatbot_doctordetails
+        )
+        UPDATE chatbot_doctordetails AS d
+        SET rank = r.department_rank
+        FROM ranked_doctors r
+        WHERE d.doctorname = r.doctorname AND d.department = r.department;
+        """
 
-#         # Execute the raw SQL query
-#         with connection.cursor() as cursor:
-#             cursor.execute(sql_query)
+        # Execute the raw SQL query
+        with connection.cursor() as cursor:
+            cursor.execute(sql_query)
 
-#         # # dept_grp = doc.groupby('Department')
-#         # # doc['Rank'] = dept_grp.rank_math.rank(ascending=False).astype('int')
-#     except:
-#         pass
+        # # dept_grp = doc.groupby('Department')
+        # # doc['Rank'] = dept_grp.rank_math.rank(ascending=False).astype('int')
+    except:
+        pass
 
 from happytransformer import HappyTextToText, TTSettings
 from sentence_transformers import SentenceTransformer, util
 from pandasai import PandasAI
 from pandasai.llm import Starcoder                      
 import pandas as pd
+PandasAI_key = os.environ.get('PandasAI_key')
 
 @csrf_exempt
 def user_question(request):
     question = request.POST.get('question')
     if not question: return JsonResponse({'error':'enter valid question'})
+
     user_input = question.strip()
     if not user_input: return JsonResponse({'error':'enter valid question'})
 
@@ -320,8 +323,7 @@ def user_question(request):
             
             if score > 0.1:  # 20% similarity threshold
                 # Step 4: Forward the question to the question answering model (using PandasAI)
-                API_key = "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"
-                llm = Starcoder(api_token=API_key)
+                llm = Starcoder(api_token=PandasAI_key)
                 pandas_ai = PandasAI(llm, conversational=False, verbose=True)
                 response = pandas_ai.run(data, prompt=corrected_user_input)
                 print('Response --> ',response)
@@ -337,8 +339,7 @@ def user_question(request):
                     response_html = response_df.to_html(classes='table table-bordered', index=False)
                 else:
                     response_html = str(response)
-                print(response_html,end="1234567890")
-                print(type(response),end="asdfghjkl")
+
                 return JsonResponse({'response': response_html,'message':"hello"})
 
                 # Exit the loop once a matching question is found

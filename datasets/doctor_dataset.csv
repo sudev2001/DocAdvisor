@@ -1,0 +1,151 @@
+,Doctor Name,Department,Experience,Place,Hospital Name,Contact Number,positive_count,negative_count,neutral_count,total_reviews,rank_math,Rank
+0,David Chavez,Cardiology,3,Ernakulam,Jubilee Mission,+91-9507604768,63,69,41,173,-0.0346820809248554,5
+1,Nicole Pham,Ortho,2,Ernakulam,Nayara,+91-1614187441,74,66,34,174,0.0459770114942528,5
+2,Maria Proctor,Ortho,5,Ernakulam,Jubilee Mission,+91-8452225935,70,62,35,167,0.0479041916167664,5
+3,Mr. Samuel Miller,Ortho,4,Calicut,Co-operative,+91-6320449529,69,58,38,165,0.0666666666666666,4
+4,Wesley Rodriguez,ENT,1,Ernakulam,Jubilee Mission,+91-8317444673,76,67,43,186,0.0483870967741935,3
+5,Kathryn Levy,General,4,Thrissur,Medical College,+91-8906965273,70,51,42,163,0.1165644171779141,1
+6,Jose Elliott,General,5,Calicut,Co-operative,+91-8908281398,73,75,37,185,-0.0108108108108108,6
+7,Justin Hernandez,General,5,Calicut,Co-operative,+91-1400001732,64,55,32,151,0.0596026490066225,3
+8,Kelly Strickland,General,5,Thrissur,Amala Hospital,+91-7777885232,77,53,44,174,0.1379310344827586,1
+9,John Edwards,Ortho,5,Thrissur,Amala Hospital,+91-5549253147,62,62,45,169,0.0,4
+10,James Peters,Psychology,3,Calicut,Co-operative,+91-6696114975,61,63,33,157,-0.0127388535031847,2
+11,Michael Rodriguez MD,Pediatrics,5,Calicut,MIMS,+91-3379597063,51,58,42,151,-0.0463576158940397,6
+12,Michael Burgess,ENT,1,Thrissur,Medical College,+91-8764730287,68,65,34,167,0.0179640718562874,3
+13,Crystal King,ENT,2,Calicut,MIMS,+91-7452250539,53,67,28,148,-0.0945945945945946,2
+14,Miss Elizabeth Rivera DDS,Pediatrics,4,Calicut,MIMS,+91-5370140704,73,65,36,174,0.0459770114942528,3
+15,Vincent Murphy,Cardiology,2,Calicut,MIMS,+91-3784510738,70,56,34,160,0.0875,1
+16,Steven Hart,Cardiology,2,Thrissur,Medical College,+91-2114023378,63,69,41,173,-0.0346820809248554,3
+17,Joanne Jones,Ortho,5,Calicut,MIMS,+91-1784304695,71,60,29,160,0.06875,1
+18,Jose Page,Pediatrics,3,Calicut,Co-operative,+91-2928164307,77,53,44,174,0.1379310344827586,1
+19,Malik Harding,Cardiology,4,Ernakulam,Nayara,+91-9916435385,69,62,44,175,0.04,3
+20,Jesse Diaz,General,4,Calicut,MIMS,+91-1973175650,62,74,42,178,-0.0674157303370786,3
+21,Frederick Reed DDS,General,4,Thrissur,Amala Hospital,+91-8039883271,58,76,41,175,-0.1028571428571428,7
+22,Autumn Cameron,General,4,Calicut,Co-operative,+91-2669217365,61,63,33,157,-0.0127388535031847,7
+23,Taylor Gutierrez,Cardiology,5,Ernakulam,Nayara,+91-6244531654,51,45,40,136,0.0441176470588235,2
+24,Laura Hall,General,3,Calicut,MIMS,+91-9885511603,75,68,39,182,0.0384615384615384,2
+25,Angelica Barrett,Pediatrics,5,Ernakulam,Jubilee Mission,+91-6164694000,52,55,46,153,-0.0196078431372549,4
+26,Lisa Hall,ENT,3,Thrissur,Medical College,+91-5350357041,80,62,24,166,0.108433734939759,1
+27,Sean Newman,ENT,4,Ernakulam,Nayara,+91-4796966689,53,67,28,148,-0.0945945945945946,4
+28,Cathy Wilson,General,2,Thrissur,Medical College,+91-1564821376,60,82,42,184,-0.1195652173913043,8
+29,Paula Madden,Psychology,3,Thrissur,Amala Hospital,+91-9636032711,56,72,41,169,-0.0946745562130177,3
+30,Kyle Gilbert,ENT,4,Calicut,MIMS,+91-2761792796,60,71,41,172,-0.063953488372093,1
+31,Aaron Cummings,Psychology,2,Ernakulam,Jubilee Mission,+91-5171287876,56,70,40,166,-0.0843373493975903,4
+32,Samantha Collins,Cardiology,2,Thrissur,Medical College,+91-6582659594,82,65,48,195,0.0871794871794871,1
+33,Daniel Curry,General,5,Thrissur,Amala Hospital,+91-7893205751,73,75,37,185,-0.0108108108108108,5
+34,Victor Myers,Ortho,5,Calicut,Co-operative,+91-8043461724,73,55,48,176,0.1022727272727272,3
+35,Daniel Monroe,Pediatrics,2,Thrissur,Medical College,+91-1194765508,74,67,58,199,0.0351758793969849,1
+36,Crystal Scott,ENT,3,Ernakulam,Nayara,+91-5182916624,67,55,41,163,0.0736196319018405,2
+37,Justin Parks,Cardiology,4,Ernakulam,Nayara,+91-2440206515,76,60,33,169,0.0946745562130177,1
+38,Joseph Perez,Psychology,4,Thrissur,Amala Hospital,+91-3880812167,82,65,48,195,0.0871794871794871,1
+39,Tracy Arnold,Psychology,4,Ernakulam,Jubilee Mission,+91-5392757496,56,70,40,166,-0.0843373493975903,4
+40,Amy Gilbert,Ortho,5,Ernakulam,Nayara,+91-1801995477,66,66,34,166,0.0,7
+41,Mary Daniels,Psychology,5,Ernakulam,Nayara,+91-8795026192,78,63,37,178,0.0842696629213483,1
+42,Jessica Barrett,Cardiology,4,Thrissur,Amala Hospital,+91-8213826374,63,68,38,169,-0.029585798816568,4
+43,Alan Palmer,Cardiology,2,Calicut,MIMS,+91-6086287154,52,70,34,156,-0.1153846153846153,8
+44,Joshua Martin,Ortho,4,Ernakulam,Nayara,+91-6865430462,74,55,43,172,0.1104651162790697,1
+45,Patrick Mahoney,ENT,5,Thrissur,Medical College,+91-3591203461,75,64,52,191,0.0575916230366492,2
+46,Dorothy Miller,General,5,Thrissur,Medical College,+91-9038968979,70,60,38,168,0.0595238095238095,3
+47,Renee Smith,Cardiology,2,Calicut,Co-operative,+91-7628450363,68,65,34,167,0.0179640718562874,2
+48,Victoria Bryant,General,1,Thrissur,Medical College,+91-2866395282,62,74,42,178,-0.0674157303370786,6
+49,Dean Hale,Pediatrics,4,Calicut,MIMS,+91-4857507390,69,65,29,163,0.0245398773006134,5
+50,Sarah Ferguson,Ortho,3,Calicut,MIMS,+91-7472057187,58,76,41,175,-0.1028571428571428,6
+51,Laura Green,Psychology,3,Calicut,MIMS,+91-5752047782,67,65,48,180,0.0111111111111111,7
+52,Kenneth Steele,Ortho,1,Ernakulam,Jubilee Mission,+91-5521838823,76,60,33,169,0.0946745562130177,3
+53,Jeremy Green,Ortho,2,Calicut,Co-operative,+91-6711484465,80,62,24,166,0.108433734939759,2
+54,Jacob Garcia,Cardiology,5,Ernakulam,Jubilee Mission,+91-9410346156,74,67,58,199,0.0351758793969849,2
+55,Lisa Smith,General,4,Thrissur,Amala Hospital,+91-5174180474,64,61,52,177,0.0169491525423728,4
+56,Nathan Bell,ENT,4,Ernakulam,Nayara,+91-5823141384,59,56,39,154,0.0194805194805194,3
+57,Ryan Smith,Cardiology,2,Ernakulam,Nayara,+91-9308300542,64,66,25,155,-0.0129032258064516,4
+58,Vanessa Thompson,Pediatrics,1,Thrissur,Amala Hospital,+91-4321280738,67,72,36,175,-0.0285714285714285,1
+59,Karen Diaz,Psychology,3,Ernakulam,Jubilee Mission,+91-4319249227,75,68,39,182,0.0384615384615384,1
+60,Mark Zhang,Psychology,1,Ernakulam,Nayara,+91-7912588116,59,61,29,149,-0.0134228187919463,2
+61,Joshua Bentley,ENT,2,Thrissur,Amala Hospital,+91-9946535124,89,69,36,194,0.1030927835051546,1
+62,Amanda Gomez,General,1,Calicut,Co-operative,+91-5082385915,62,62,45,169,0.0,5
+63,Kathleen Glass,Cardiology,5,Calicut,MIMS,+91-1411020680,75,73,40,188,0.0106382978723404,6
+64,David White,ENT,5,Ernakulam,Jubilee Mission,+91-3397878157,63,69,46,178,-0.0337078651685393,4
+65,Jason Walker,General,3,Calicut,Co-operative,+91-7313303310,62,66,42,170,-0.0235294117647058,8
+66,Evelyn Hanna,Psychology,1,Ernakulam,Jubilee Mission,+91-4719288149,63,61,37,161,0.0124223602484472,3
+67,Stephanie Miller,Ortho,3,Thrissur,Medical College,+91-3024955051,62,62,45,169,0.0,1
+68,Kim Hill,General,5,Calicut,MIMS,+91-1153740675,72,52,38,162,0.1234567901234567,1
+69,Marissa Powell,General,4,Calicut,Co-operative,+91-8259191218,62,74,52,188,-0.0638297872340425,9
+70,Kimberly Thompson,Pediatrics,1,Ernakulam,Jubilee Mission,+91-1813608791,75,69,39,183,0.0327868852459016,3
+71,Tracy Munoz Jr.,Cardiology,4,Calicut,Co-operative,+91-9924218421,69,65,29,163,0.0245398773006134,1
+72,Sylvia Ferguson,Cardiology,1,Calicut,Co-operative,+91-8069312371,75,84,31,190,-0.0473684210526315,3
+73,Jason Rodriguez,Ortho,1,Ernakulam,Jubilee Mission,+91-6684169444,65,44,27,136,0.1544117647058823,1
+74,Katrina Jackson,General,4,Thrissur,Amala Hospital,+91-6234771067,68,65,34,167,0.0179640718562874,3
+75,Christina Cox MD,General,1,Thrissur,Medical College,+91-7425464374,56,70,40,166,-0.0843373493975903,7
+76,Dustin Ford,Cardiology,2,Ernakulam,Jubilee Mission,+91-4416723700,82,63,19,164,0.1158536585365853,1
+77,Victoria Webb,Psychology,4,Calicut,MIMS,+91-1897311699,73,75,37,185,-0.0108108108108108,8
+78,Diane Reynolds,Pediatrics,1,Ernakulam,Nayara,+91-8558374705,75,67,49,191,0.0418848167539267,1
+79,Denise Palmer,Pediatrics,1,Calicut,MIMS,+91-3192554494,68,48,34,150,0.1333333333333333,1
+80,Paul Kramer,Cardiology,2,Calicut,MIMS,+91-7480253266,53,67,28,148,-0.0945945945945946,7
+81,Joseph Moran,ENT,5,Ernakulam,Jubilee Mission,+91-6302884880,59,74,46,179,-0.0837988826815642,5
+82,Mary Anderson,ENT,5,Ernakulam,Jubilee Mission,+91-8813928259,70,60,38,168,0.0595238095238095,2
+83,Katherine Spence,Ortho,4,Thrissur,Amala Hospital,+91-3296725918,70,56,34,160,0.0875,1
+84,Isabella Cain,Cardiology,4,Thrissur,Amala Hospital,+91-5126985414,67,55,41,163,0.0736196319018405,3
+85,Mike Gonzalez,Ortho,2,Ernakulam,Jubilee Mission,+91-5053836499,64,55,32,151,0.0596026490066225,4
+86,Michelle Parker,Ortho,5,Calicut,MIMS,+91-9229734215,73,75,37,185,-0.0108108108108108,2
+87,Jacqueline Moore,Pediatrics,5,Calicut,Co-operative,+91-7606218483,64,68,35,167,-0.0239520958083832,3
+88,Timothy Norris,Pediatrics,1,Thrissur,Amala Hospital,+91-1026113140,63,68,38,169,-0.029585798816568,2
+89,James Simmons,Ortho,5,Thrissur,Medical College,+91-2462293808,65,66,44,175,-0.0057142857142857,2
+90,Micheal Blair,Psychology,5,Calicut,MIMS,+91-1569106652,72,66,43,181,0.0331491712707182,6
+91,Edwin Holt,Cardiology,2,Calicut,MIMS,+91-1467310661,70,66,31,167,0.0239520958083832,5
+92,Vanessa Nelson,Ortho,1,Calicut,Co-operative,+91-3299504242,63,61,37,161,0.0124223602484472,5
+93,Tracey White,Ortho,1,Calicut,Co-operative,+91-4359455917,67,41,36,144,0.1805555555555555,1
+94,Gina Gonzalez,Psychology,5,Calicut,MIMS,+91-7366480811,74,66,34,174,0.0459770114942528,4
+95,Virginia Franco,Cardiology,1,Ernakulam,Jubilee Mission,+91-1323405708,68,72,39,179,-0.0223463687150838,4
+96,Frank Ross,Cardiology,2,Calicut,MIMS,+91-2455982086,70,65,41,176,0.0284090909090909,4
+97,Julie Flores,Ortho,3,Calicut,MIMS,+91-3009213113,62,71,40,173,-0.0520231213872832,4
+98,Sarah Green,ENT,5,Ernakulam,Jubilee Mission,+91-8449240061,73,55,48,176,0.1022727272727272,1
+99,Natalie Sullivan,Ortho,3,Thrissur,Amala Hospital,+91-4269136953,70,57,37,164,0.0792682926829268,2
+100,Adam Stewart,Ortho,2,Ernakulam,Nayara,+91-2953629330,67,55,41,163,0.0736196319018405,3
+101,Christine Alvarado,General,1,Thrissur,Amala Hospital,+91-2252012732,61,63,33,157,-0.0127388535031847,6
+102,David Valencia,General,3,Ernakulam,Jubilee Mission,+91-5230366541,74,70,39,183,0.0218579234972677,1
+103,Karen Ayala MD,ENT,4,Thrissur,Medical College,+91-5567428212,60,82,42,184,-0.1195652173913043,4
+104,Mr. Matthew Cortez,Ortho,3,Ernakulam,Nayara,+91-4412653202,81,62,40,183,0.1038251366120218,2
+105,Richard Peterson,Psychology,4,Calicut,MIMS,+91-6456649144,70,60,38,168,0.0595238095238095,3
+106,Jeffrey Rubio,General,2,Ernakulam,Jubilee Mission,+91-4190240682,62,74,52,188,-0.0638297872340425,2
+107,Jason Johnson,General,1,Thrissur,Amala Hospital,+91-4512825202,59,56,39,154,0.0194805194805194,2
+108,Travis Lambert,General,3,Ernakulam,Nayara,+91-5897608275,65,59,44,168,0.0357142857142857,1
+109,Stacy Pacheco,Ortho,2,Ernakulam,Nayara,+91-1314928613,63,66,42,171,-0.0175438596491228,8
+110,Jodi White,Ortho,1,Thrissur,Amala Hospital,+91-4592387659,62,59,32,153,0.0196078431372549,3
+111,Amanda Johnson,Pediatrics,3,Ernakulam,Jubilee Mission,+91-4580636234,75,60,38,173,0.0867052023121387,1
+112,Heather Williamson,Cardiology,3,Thrissur,Medical College,+91-5480668744,66,55,42,163,0.0674846625766871,2
+113,Charles Howard,Cardiology,2,Thrissur,Amala Hospital,+91-1890242410,74,55,43,172,0.1104651162790697,1
+114,Nathan Ramos,General,3,Calicut,Co-operative,+91-4606140135,71,68,26,165,0.0181818181818181,4
+115,Mark Wilson MD,Pediatrics,2,Ernakulam,Jubilee Mission,+91-2929153339,76,67,43,186,0.0483870967741935,2
+116,Phillip Frye,Pediatrics,1,Calicut,Co-operative,+91-3968985029,69,50,41,160,0.11875,2
+117,Christy Allen,Psychology,3,Calicut,MIMS,+91-1521953468,78,62,37,177,0.0903954802259887,1
+118,Kevin Porter,Ortho,2,Ernakulam,Nayara,+91-8416330699,67,72,36,175,-0.0285714285714285,9
+119,Edward Robinson,Psychology,3,Calicut,Co-operative,+91-6137861270,70,66,41,177,0.0225988700564971,1
+120,Jeremy Brown,Pediatrics,3,Thrissur,Medical College,+91-7515668996,60,71,41,172,-0.063953488372093,2
+121,Colleen Richardson,Psychology,1,Thrissur,Medical College,+91-5560947505,57,61,48,166,-0.0240963855421686,1
+122,Ian Smith,Psychology,4,Thrissur,Amala Hospital,+91-6654587867,71,60,29,160,0.06875,2
+123,Tiffany Miller,Ortho,1,Ernakulam,Jubilee Mission,+91-3433702815,56,61,41,158,-0.0316455696202531,6
+124,Judy Leblanc,Ortho,3,Calicut,MIMS,+91-5802765519,61,70,28,159,-0.0566037735849056,5
+125,Lauren Krause,Ortho,3,Thrissur,Medical College,+91-7825657244,58,76,41,175,-0.1028571428571428,3
+126,Christopher Weaver,Pediatrics,3,Ernakulam,Nayara,+91-2538852358,72,68,33,173,0.0231213872832369,2
+127,Monique Mclaughlin,Cardiology,1,Thrissur,Amala Hospital,+91-4025032292,89,69,36,194,0.1030927835051546,2
+128,Danielle Griffin,Cardiology,4,Calicut,MIMS,+91-7688177742,75,67,49,191,0.0418848167539267,2
+129,Candice Strickland,Ortho,5,Calicut,Co-operative,+91-1527464381,68,73,41,182,-0.0274725274725274,6
+130,Lucas Mann,Pediatrics,2,Calicut,MIMS,+91-2431599359,74,66,34,174,0.0459770114942528,3
+131,Brooke Green,Pediatrics,3,Calicut,MIMS,+91-3382486105,71,51,34,156,0.1282051282051282,2
+132,Mark Jenkins,Psychology,2,Calicut,MIMS,+91-5104306054,78,63,37,178,0.0842696629213483,2
+133,Troy Farmer,General,4,Thrissur,Medical College,+91-8854124549,70,62,35,167,0.0479041916167664,4
+134,Stephanie Yang,Psychology,5,Calicut,MIMS,+91-6222826420,75,68,39,182,0.0384615384615384,5
+135,Colton Jones,General,1,Ernakulam,Nayara,+91-9163599230,61,70,28,159,-0.0566037735849056,2
+136,Robin Thomas,Ortho,3,Calicut,MIMS,+91-7846581025,68,73,41,182,-0.0274725274725274,3
+137,Pamela Holder,Ortho,2,Ernakulam,Nayara,+91-3469183411,75,73,40,188,0.0106382978723404,6
+138,Ashley Oconnor,Cardiology,1,Thrissur,Amala Hospital,+91-1828513141,53,67,28,148,-0.0945945945945946,5
+139,Matthew Duncan,Ortho,3,Ernakulam,Nayara,+91-4591777253,66,55,42,163,0.0674846625766871,4
+140,Brian Mason,ENT,3,Ernakulam,Nayara,+91-3264162790,89,69,36,194,0.1030927835051546,1
+141,Bradley Jackson,General,2,Thrissur,Medical College,+91-6065277157,76,60,33,169,0.0946745562130177,2
+142,Lori Peters,Psychology,2,Ernakulam,Nayara,+91-8927250043,62,74,43,179,-0.0670391061452514,3
+143,Katherine Levy,Cardiology,3,Calicut,MIMS,+91-2820262844,72,66,43,181,0.0331491712707182,3
+144,Christopher Schultz,General,3,Calicut,Co-operative,+91-3867868555,72,52,38,162,0.1234567901234567,1
+145,Timothy Nguyen,Cardiology,2,Ernakulam,Jubilee Mission,+91-3895333122,61,57,30,148,0.027027027027027,3
+146,Stephanie Johnson,General,5,Thrissur,Medical College,+91-3719059725,57,52,39,148,0.0337837837837837,5
+147,William Mason,General,3,Calicut,Co-operative,+91-4893609425,78,63,51,192,0.078125,2
+148,Brett Johnson,Ortho,1,Ernakulam,Jubilee Mission,+91-9296998749,73,55,48,176,0.1022727272727272,2
+149,Jennifer Bailey,Psychology,3,Ernakulam,Jubilee Mission,+91-9540169195,71,68,26,165,0.0181818181818181,2

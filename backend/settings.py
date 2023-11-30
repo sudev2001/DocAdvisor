@@ -81,20 +81,20 @@ dbPassword = os.environ.get('dbPass')
 dbUser = os.environ.get('dbUser')
 dbName = os.environ.get('dbName')
 
-# DATABASES = {
-# 'default': {
-#     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#     'NAME':dbName ,
-#     'USER':dbUser ,
-#     'PASSWORD': dbPassword,
-#     'HOST': 'localhost',
-#     'PORT': '5432',
-# }
-# }
-
 DATABASES = {
-	"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME':dbName ,
+    'USER':dbUser ,
+    'PASSWORD': dbPassword,
+    'HOST': 'localhost',
+    'PORT': '5432',
 }
+}
+
+# DATABASES = {
+# 	"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+# }
 
 
 # Password validation
