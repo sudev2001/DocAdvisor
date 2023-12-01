@@ -1,11 +1,11 @@
-datasets
-decorator
+# datasets
+# decorator
 Django
 # google-ai-generativelanguage
 # google-api-core
 # google-auth
 # google-auth-oauthlib
-# google-generativeai>=0.2.2
+google-generativeai
 # google-pasta
 # googleapis-common-protos
 happytransformer
@@ -16,9 +16,9 @@ joblib
 nltk
 numpy
 pandas
-pandasai==0.8.3
+# pandasai==0.8.3
 Pillow
-psycopg
+psycopg2
 python-decouple
 python-dotenv
 pytz

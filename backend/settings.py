@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-dbPassword = os.environ.get('dbPass')
+dbPassword = os.environ.get('dbPassword')
 dbUser = os.environ.get('dbUser')
 dbName = os.environ.get('dbName')
 

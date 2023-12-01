@@ -4,3 +4,4 @@ from .models import *
 
 admin.site.register(DoctorDetails)
 admin.site.register(Review)
+admin.site.register(MultipleDoctors)

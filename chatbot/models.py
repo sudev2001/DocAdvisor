@@ -20,3 +20,10 @@ class Review(models.Model):
     department = models.CharField(max_length=100,blank=True,null=True)
     doctor_id = models.ForeignKey(DoctorDetails,on_delete=models.CASCADE)
     review = models.TextField(null=True,blank=True)
+
+class MultipleDoctors(models.Model):
+    user = models.CharField(max_length=255)
+    department = models.CharField(max_length=255)
+    place = models.CharField(max_length=100, null=True, blank=True)
+    hospital_name = models.CharField(max_length=100, null=True, blank=True)
+    experience = models.PositiveBigIntegerField(null=True, blank=True)
