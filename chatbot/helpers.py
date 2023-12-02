@@ -46,7 +46,10 @@ def find_hospital(user_hsptl,data,user):
     query = MultipleDoctors.objects.get(user=user)
     place = query.place
     hsptl = data[data.place == place]['hospital_name'].unique()
-    if user_hsptl in hsptl:
+    hsptl = [hsptls.upper() for hsptls in hsptl]
+    if user_hsptl.lower() == 'no':
+        return 'If require experience, please enter experience from 1 to 5 (in Years) else NO'
+    if user_hsptl.upper() in hsptl:
         query.hospital_name = user_hsptl
         query.save()
         return "If require experience, please enter experience from 1 to 5 (in Years) else NO"
@@ -55,15 +58,23 @@ def find_hospital(user_hsptl,data,user):
 
 def experience(user_exp,data,user):
     query = MultipleDoctors.objects.get(user=user)
-    if int(user_exp)>=1 and int(user_exp)<=5:
+    if user_exp.lower() == 'no':
+        if query.place is None:
+            result = data[(data.department == query.department)]
+        elif query.place is not None and query.hospital_name is None:
+            result = data[(data.department == query.department) & (data.place == query.place)]
+        else:
+            result = data[(data.department == query.department) & (data.place == query.place) & (data.hospital_name == query.hospital_name)]
+    elif int(user_exp)>=1 and int(user_exp)<=5:
         if query.place is None:
             result = data[(data.department == query.department) & (data.experience>= int(user_exp))]
         elif query.place is not None and query.hospital_name is None:
             result = data[(data.department == query.department) & (data.place == query.place) & (data.experience>= int(user_exp))]
         else:
             result = data[(data.department == query.department) & (data.place == query.place) & (data.hospital_name == query.hospital_name) & (data.experience>= int(user_exp))]
-        print('---------------------------------->>>>>>>>>>>>>>>>..')
-        print(result)
-        return result.to_html(classes='table table-bordered', index=False)
+
     else:
         return "Please enter the experience in proper range"
+    result.sort_values(by=['rank', 'experience'], ascending=[True, False], inplace=True)
+    return result.to_dict(orient='records')
+    

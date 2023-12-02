@@ -2,6 +2,12 @@
 {% load static %}
 {% block title %}Home{% endblock  %}
 {% block body %}
+<style>
+
+  .custom-modal-dialog {
+    max-width: 50%;
+}
+</style>
 
 <div class="preloader-wrapper">
     <div class="preloader">
@@ -51,7 +57,7 @@
       </div>
     </div>
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog custom-modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <h3 class="modal-title" id="staticBackdropLabel">Get your Doctor details</h3>
@@ -140,6 +146,9 @@
                 head.append($('<th>').text("Department"))
                 head.append($('<th>').text("Experience"))
                 head.append($('<th>').text("Rank"))
+                head.append($('<th>').text("Place"))
+                  head.append($('<th>').text("Hospital"))
+                  head.append($('<th>').text("Contact"))
                   
                 // Iterate over the doctor details and create rows in the table
                 $.each(data, function (key, value) {
@@ -149,6 +158,9 @@
                     row.append($('<td>').text(value.department));
                     row.append($('<td>').text(value.experience + ' years'));
                     row.append($('<td>').text(value.rank));
+                    row.append($('<td>').text(value.place));
+                    row.append($('<td>').text(value.hospital_name));
+                    row.append($('<td>').text(value.contact_number));
                 });
                  
               }

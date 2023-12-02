@@ -1,39 +1,39 @@
-{% extends "base.html" %}
-{% block title %}Bot{% endblock title %}
-{% block body %}
+{% extends "base.html" %} 
+{% block title %}Bot{% endblock title %} 
+{% block body%}
 
 <style>
-::-webkit-scrollbar {
-  width: 4px;
-}
-::-webkit-scrollbar-thumb {
-  background-color: #4c4c6a;
-  border-radius: 2px;
-}
-.chatbox {
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #4c4c6a;
+    border-radius: 2px;
+  }
+  .chatbox {
     height: calc(100vh - 115px);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
     margin: auto;
     width: 75%;
     border-radius: 20px;
-}
-.chat-window {
+  }
+  .chat-window {
     flex: auto;
     max-height: calc(100% - 60px);
     background: #2f323b;
     overflow: auto;
-}
-.chat-input {
+  }
+  .chat-input {
     flex: 0 0 auto;
     height: 60px;
     background: #40434e;
     border-top: 1px solid #2671ff;
-    box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
-}
-.chat-input input {
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+  }
+  .chat-input input {
     height: 59px;
     line-height: 60px;
     outline: 0 none;
@@ -44,37 +44,38 @@
     font-size: 12pt;
     padding: 0;
     background: #40434e;
-}
-.chat-input button {
+  }
+  .chat-input button {
     float: right;
     outline: 0 none;
     border: none;
-    background: rgba(255,255,255,.25);
+    background: rgba(255, 255, 255, 0.25);
     height: 40px;
     width: 40px;
     border-radius: 50%;
     padding: 2px 0 0 0;
     margin: 10px;
     transition: all 0.15s ease-in-out;
-}
-.chat-input input[good] + button {
-    box-shadow: 0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);
+  }
+  .chat-input input[good] + button {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
     background: #2671ff;
-}
-.chat-input input[good] + button:hover {
-    box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-}
-.chat-input input[good] + button path {
+  }
+  .chat-input input[good] + button:hover {
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2),
+      0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  .chat-input input[good] + button path {
     fill: white;
-}
-.msg-container {
+  }
+  .msg-container {
     position: relative;
     display: inline-block;
     width: 100%;
     margin: 0 0 10px 0;
     padding: 0;
-}
-.msg-box {
+  }
+  .msg-box {
     display: flex;
     background: #5b5e6c;
     padding: 10px 10px 0 10px;
@@ -82,121 +83,272 @@
     max-width: 80%;
     width: auto;
     float: left;
-    box-shadow: 0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);
-}
-.user-img {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+  }
+  .user-img {
     display: inline-block;
     border-radius: 50%;
     height: 40px;
     width: 40px;
     background: #2671ff;
     margin: 0 10px 10px 0;
-}
-.flr {
+  }
+  .flr {
     flex: 1 0 auto;
     display: flex;
     flex-direction: column;
     width: calc(100% - 50px);
-}
-.messages {
+  }
+  .messages {
     flex: 1 0 auto;
-}
-.msg {
+  }
+  .msg {
     display: inline-block;
     font-size: 11pt;
     line-height: 13pt;
-    color: rgba(255,255,255,.7);
+    color: rgba(255, 255, 255, 0.7);
     margin: 0 0 4px 0;
-}
-.msg:first-of-type {
+  }
+  .msg:first-of-type {
     margin-top: 8px;
-}
-.timestamp {
-    color: rgba(0,0,0,.38);
+  }
+  .timestamp {
+    color: rgba(0, 0, 0, 0.38);
     font-size: 8pt;
     margin-bottom: 10px;
-}
-.username {
+  }
+  .username {
     margin-right: 3px;
-}
-.posttime {
+  }
+  .posttime {
     margin-left: 3px;
-}
-.msg-self .msg-box {
+  }
+  .msg-self .msg-box {
     border-radius: 6px 0 0 6px;
     background: #2671ff;
     float: right;
-}
-.msg-self .user-img {
+  }
+  .msg-self .user-img {
     margin: 0 0 10px 10px;
-}
-.msg-self .msg {
+  }
+  .msg-self .msg {
     text-align: right;
-}
-.msg-self .timestamp {
+  }
+  .msg-self .timestamp {
     text-align: right;
-}
+  }
 </style>
 
-    <section class="chatbox">
-      <section class="chat-window"  id="messageFormeight"  >
-        <article class="msg-container msg-remote" style="margin-top:10px;" id="msg-0"><div class="msg-box"><img class="user-img" id="user-0" src="//gravatar.com/avatar/00034587632094500000000000000000?d=retro" />
-            Hey, I'm DocAdvisor. How can I help you?<br>
-            Enter the department to know the best</div></article>
-      </section>
-      <form style="margin-bottom:0;" class="chat-input" id="messageArea" >
-        <input type="text" id="text" name="msg"  placeholder="Type your message..." autocomplete="off" class="form-control type_msg" required/>
-        <button style="margin-top:-45px;" type="submit" id="send" class="input-group-text send_btn">
-                      <svg style="width:24px;height:24px" viewBox="0 0 24 24"><path fill="rgba(0,0,0,.38)" d="M17,12L12,17V14H8V10H12V7L17,12M21,16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V7.5C3,7.12 3.21,6.79 3.53,6.62L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.79,6.79 21,7.12 21,7.5V16.5M12,4.15L5,8.09V15.91L12,19.85L19,15.91V8.09L12,4.15Z" /></svg>
-                  </button>
-      </form>
-
-    </section>
-
-    <script>
-        var question = ''
-        $(document).ready(function() {
-            $("#messageArea").on("submit", function(event) {
-
-                var rawText = $("#text").val();
-            
-                var userHtml = '<article style="color:white;" class="msg-container msg-self" id="msg-0"> <div class="msg-box"><div class="card-body msg_card_body"><p class="msg" id="msg-0">' + rawText + ' </p></div></div></article>';
-                
-                $("#text").val("");
-                $("#messageFormeight").append(userHtml);
-                var botLoaderHtml = '<div class="d-flex justify-content-start mb-4" id="chatResLoader"><div class="img_cont_msg"><img style="width:3%" src="https://www.shutterstock.com/shutterstock/photos/287587964/display_1500/stock-vector-medical-pharmacy-logo-design-template-vector-illustrator-287587964.jpg" class="rounded-circle user_img_msg"></div><div class="msg_cotainer">AI proccessing...</div></div>';
-                $("#messageFormeight").append(botLoaderHtml);
-                $.ajax({
-                    data: {
-                        question:question,
-                        answer: rawText,
-                    },
-                    type: "POST",
-                    url: "/user-question/",
-                }).done(function (data) {
-                    document.getElementById('chatResLoader').remove()
-                    if (data.response) {  
-                        if (data.response.startsWith('<table')) {
-                            // Response is a table (HTML), render it as a table
-                            var botHtml = '<article class="msg-container msg-remote" id="msg-0"><div class="msg-box"><img class="user-img" id="user-0" src="//gravatar.com/avatar/00034587632094500000000000000000?d=retro" /><div class="flr"><div class="messages">' + data.response + '</div></div></div></article>';
-                            $("#messageFormeight").append($.parseHTML(botHtml));
-                        } else {
-                            // Response is plain text, render it as text
-                            var botHtml = '<article class="msg-container msg-remote" id="msg-0"><div class="msg-box"><img class="user-img" id="user-0" src="//gravatar.com/avatar/00034587632094500000000000000000?d=retro" /><div class="flr"><div class="messages">' + data.response + '</div></div></div></article>';
-                            $("#messageFormeight").append($.parseHTML(botHtml));
-                        }
-                    } else {
-                        console.log('Error --0---> ',data  )
-                        var botHtml = '<article class="msg-container msg-remote" id="msg-0"><div class="msg-box"><img class="user-img" id="user-0" src="//gravatar.com/avatar/00034587632094500000000000000000?d=retro" /><div class="flr"><div class="messages">' + data.error + '</div></div></div></article>';
-                            $("#messageFormeight").append($.parseHTML(botHtml));
-                    }
-                    question = data.response
-                    alert(question)
-                });
-
-                event.preventDefault();
-            });
-        });
+<section class="chatbox">
+  <section class="chat-window" id="messageFormeight">
+    <article
+      class="msg-container msg-remote"
+      style="margin-top: 10px"
+      id="msg-0"
+    >
+    <div class="msg-box">
+        <img
+          class="user-img"
+          id="user-0"
+          src="//gravatar.com/avatar/00034587632094500000000000000000?d=retro"
+        />
+        Hey, I'm DocAdvisor. How can I help you?<br />
+        Enter the department to know the best
+    </div>
+    <article class="msg-container msg-remote" id="msg-0"><div><div class="flr"><div class="messages">
+        <table class="table table-bordered mt-4">
+            <thead>
+              <tr id="id_thead"></tr>
+            </thead>
+            <tbody>
+              <tr id="id_tbody"></tr>
+            </tbody>
+          </table>
+    </div></div></div></article>
+</section>
         
-    </script>
+
+    </article>
+  <form style="margin-bottom: 0" class="chat-input" id="messageArea">
+    <input
+      type="text"
+      id="text"
+      name="msg"
+      placeholder="Type your message..."
+      autocomplete="off"
+      class="form-control type_msg"
+      required
+    />
+    <button
+      style="margin-top: -45px"
+      type="submit"
+      id="send"
+      class="input-group-text send_btn"
+    >
+      <svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
+        <path
+          fill="rgba(0,0,0,.38)"
+          d="M17,12L12,17V14H8V10H12V7L17,12M21,16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V7.5C3,7.12 3.21,6.79 3.53,6.62L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.79,6.79 21,7.12 21,7.5V16.5M12,4.15L5,8.09V15.91L12,19.85L19,15.91V8.09L12,4.15Z"
+        />
+      </svg>
+    </button>
+  </form>
+</section>
+
+<script>
+  var question = "";
+  $(document).ready(function () {
+    $("#messageArea").on("submit", function (event) {
+      var rawText = $("#text").val();
+
+      var userHtml =
+        '<article style="color:white;" class="msg-container msg-self" id="msg-0"> <div class="msg-box"><div class="card-body msg_card_body"><p class="msg" id="msg-0">' +
+        rawText +
+        " </p></div></div></article>";
+
+      $("#text").val("");
+      $("#messageFormeight").append(userHtml);
+      var botLoaderHtml =
+        '<div class="d-flex justify-content-start mb-4" id="chatResLoader"><div class="img_cont_msg"><img style="width:3%" src="https://www.shutterstock.com/shutterstock/photos/287587964/display_1500/stock-vector-medical-pharmacy-logo-design-template-vector-illustrator-287587964.jpg" class="rounded-circle user_img_msg"></div><div class="msg_cotainer">AI proccessing...</div></div>';
+      $("#messageFormeight").append(botLoaderHtml);
+      $.ajax({
+        data: {
+          question: question,
+          answer: rawText,
+        },
+        type: "POST",
+        url: "/user-question/",
+      }).done(function (data) {
+        document.getElementById("chatResLoader").remove();
+        if (data.response) {
+          if (typeof data.response === "object") {
+            var article = $('<article>', {
+                'class': 'msg-container msg-remote bg-secondary',
+                'id': 'msg-0'
+            });
+            
+            var innerDiv = $('<div>', { 'class': 'flr' });
+            var messagesDiv = $('<div>', { 'class': 'messages' });
+            var table = $('<table>', { 'class': 'table table-bordered mt-4' })
+            var head = $('<tr>', { 'id': 'id_thead' });
+            head.append($('<th>').text("Name"))
+            head.append($('<th>').text("Department"))
+            head.append($('<th>').text("Experience"))
+            head.append($('<th>').text("Rank"))
+            head.append($('<th>').text("Action")) // New column for the button
+            
+            var tbody = $('<tbody>', { 'id': 'id_tbody' });
+            
+            // Iterate over the doctor details and create rows in the table
+            $.each(data.response, function (key, value) {
+                console.log(value,'>>>>')
+                var row = $('<tr>');
+            
+                row.append($('<td>').text(value.doctorname));
+                row.append($('<td>').text(value.department));
+                row.append($('<td>').text(value.experience + ' years'));
+                row.append($('<td>').text(value.rank));
+            
+                // Add a button to open the modal
+                var button = $('<button>', {
+                    'class': 'btn btn-primary btn-sm',
+                    'data-toggle': 'modal',
+                    'data-target': '#doctorModal' + key // Unique modal ID for each row
+                }).text('View Details');
+            
+                // Attach click event to the button to populate modal with details
+                button.click(function () {
+                    populateModal(value);
+                });
+            
+                row.append($('<td>').append(button));
+            
+                tbody.append(row)
+            });
+            
+            table.append(head);
+            table.append(tbody);
+            messagesDiv.append(table);
+            innerDiv.append(messagesDiv);
+            article.append(innerDiv);
+            $("#messageFormeight").append(article);
+            
+            // Function to populate the modal with details
+            function populateModal(details) {
+                $('#modalName').text(details.doctorname);
+                $('#modalDepartment').text(details.department);
+                $('#modalExperience').text(details.experience + ' years');
+                $('#modalRank').text(details.rank);
+                $('#modalPlace').text(details.place);
+                $('#modalHospital').text(details.hospital_name);
+                $('#modalContact').text(details.contact_number);
+                $('#doctorModal').modal('show');
+            }
+            
+            // Add a modal to the HTML for displaying details
+            var modal = $('<div>', {
+                'class': 'modal fade',
+                'id': 'doctorModal',
+                'tabindex': '-1',
+                'role': 'dialog',
+                'aria-labelledby': 'doctorModalLabel',
+                'aria-hidden': 'true'
+            });
+            
+            var modalDialog = $('<div>', { 'class': 'modal-dialog', 'role': 'document' });
+            var modalContent = $('<div>', { 'class': 'modal-content' });
+            
+            var modalHeader = $('<div>', { 'class': 'modal-header' });
+            modalHeader.append($('<h5>', { 'class': 'modal-title', 'id': 'doctorModalLabel' }).text('Doctor Details'));
+            
+            var modalBody = $('<div>', { 'class': 'modal-body' });
+            modalBody.append($('<p>').text('Name: ').append($('<span>', { 'id': 'modalName' })));
+            modalBody.append($('<p>').text('Department: ').append($('<span>', { 'id': 'modalDepartment' })));
+            modalBody.append($('<p>').text('Experience: ').append($('<span>', { 'id': 'modalExperience' })));
+            modalBody.append($('<p>').text('Rank: ').append($('<span>', { 'id': 'modalRank' })));
+            modalBody.append($('<p>').text('Place: ').append($('<span>', { 'id': 'modalPlace' })));
+            modalBody.append($('<p>').text('Hospital: ').append($('<span>', { 'id': 'modalHospital' })));
+            modalBody.append($('<p>').text('Contact No: ').append($('<span>', { 'id': 'modalContact' })));
+            
+            var modalFooter = $('<div>', { 'class': 'modal-footer' });
+            var closeModalButton = $('<button>', {
+                'type': 'button',
+                'class': 'btn btn-secondary',
+                'data-dismiss': 'modal'
+            }).text('Close');
+            
+            modalFooter.append(closeModalButton);
+            
+            modalContent.append(modalHeader, modalBody, modalFooter);
+            modalDialog.append(modalContent);
+            modal.append(modalDialog);
+            
+            $('body').append(modal);
+            
+
+
+                
+          } else {
+            // Response is plain text, render it as text
+            var botHtml =
+              '<article class="msg-container msg-remote" id="msg-0"><div class="msg-box"><img class="user-img" id="user-0" src="//gravatar.com/avatar/00034587632094500000000000000000?d=retro" /><div class="flr"><div class="messages">' +
+              data.response +
+              "</div></div></div></article>";
+            $("#messageFormeight").append($.parseHTML(botHtml));
+          }
+        } else {
+          console.log("Error --0---> ", data);
+          var botHtml =
+            '<article class="msg-container msg-remote" id="msg-0"><div class="msg-box"><img class="user-img" id="user-0" src="//gravatar.com/avatar/00034587632094500000000000000000?d=retro" /><div class="flr"><div class="messages">' +
+            data.error +
+            "</div></div></div></article>";
+          $("#messageFormeight").append($.parseHTML(botHtml));
+        }
+        question = data.response;
+      });
+
+      event.preventDefault();
+    });
+  });
+</script>
 {% endblock %}
