@@ -1,14 +1,5 @@
-# datasets
-# decorator
 Django
-# google-ai-generativelanguage
-# google-api-core
-# google-auth
-# google-auth-oauthlib
 google-generativeai
-# google-pasta
-# googleapis-common-protos
-happytransformer
 httpcore
 httpx
 huggingface-hub
@@ -16,7 +7,6 @@ joblib
 nltk
 numpy
 pandas
-# pandasai==0.8.3
 Pillow
 psycopg2
 python-decouple
