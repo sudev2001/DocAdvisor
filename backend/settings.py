@@ -80,6 +80,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 dbPassword = os.environ.get('dbPassword')
 dbUser = os.environ.get('dbUser')
 dbName = os.environ.get('dbName')
+dbHost = os.environ.get('dbHost')
 
 DATABASES = {
 'default': {
@@ -87,7 +88,7 @@ DATABASES = {
     'NAME':dbName ,
     'USER':dbUser ,
     'PASSWORD': dbPassword,
-    'HOST': 'localhost',
+    'HOST': dbHost,
     'PORT': '5432',
 }
 }
