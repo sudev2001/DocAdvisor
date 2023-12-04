@@ -1,8 +1,6 @@
 import pandas as pd
 from .models import *
 import numpy as np
-from sentence_transformers import SentenceTransformer, util
-model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 
 
 def find_department(user_dept, data, user):
@@ -11,46 +9,40 @@ def find_department(user_dept, data, user):
         to_delete.delete()
 
     dept = data.department.unique()
-    user_input_embedding = model.encode(user_dept, convert_to_tensor=True)
-    reference_question_embeddings = model.encode(dept, convert_to_tensor=True)
-    similar_score = [util.pytorch_cos_sim(user_input_embedding, reference_question_embeddings[i])[
-        0].item() for i in range(len(dept))]
-    print(max(similar_score))
-    if max(similar_score) > .6:
-        max_index = np.argmax(similar_score)
+    dept1 = [val.lower() for val in dept]
+    if user_dept.lower() in dept1:
+        max_index = dept1.index(user_dept.lower())
         MultipleDoctors.objects.create(user=user, department=dept[max_index])
         return "If you require place, please enter the place else NO"
     else:
-        return "Please enter the dept name properly."
+        return f"""Sorry. I couldn't understand the dept. Please select one of these dept. {dept}"""
 
 
 def find_place(user_place: str, data, user):
     place = data.place.unique()
-    user_input_embedding = model.encode(user_place, convert_to_tensor=True)
-    reference_question_embeddings = model.encode(place, convert_to_tensor=True)
-    similar_score = [util.pytorch_cos_sim(user_input_embedding, reference_question_embeddings[i])[
-        0].item() for i in range(len(place))]
+    place1 = [val.lower() for val in place]
     if user_place.lower() == 'no':
         return "If require experience, please enter experience from 1 to 5 (in Years) else NO"
-    elif max(similar_score) > .6:
-        max_index = np.argmax(similar_score)
+    elif user_place.lower() in place1:
+        max_index = place1.index(user_place.lower())
         query = MultipleDoctors.objects.get(user=user)
         query.place = place[max_index]
         query.save()
         hsptl = data[data.place == place[max_index]]['hospital_name'].unique()
         return f"""If require hospital, please type hospital name {hsptl} else NO"""
     else:
-        return "Please enter the place properly."
+        return f"""Sorry. I couldn't understand the place. Please select one of these place. {place}"""
 
 def find_hospital(user_hsptl,data,user):
     query = MultipleDoctors.objects.get(user=user)
     place = query.place
     hsptl = data[data.place == place]['hospital_name'].unique()
-    hsptl = [hsptls.upper() for hsptls in hsptl]
+    hsptl1 = [hsptls.upper() for hsptls in hsptl]
     if user_hsptl.lower() == 'no':
         return 'If require experience, please enter experience from 1 to 5 (in Years) else NO'
-    if user_hsptl.upper() in hsptl:
-        query.hospital_name = user_hsptl
+    if user_hsptl.upper() in hsptl1:
+        max_index = hsptl1.index(user_hsptl.upper())
+        query.hospital_name = hsptl[max_index]
         query.save()
         return "If require experience, please enter experience from 1 to 5 (in Years) else NO"
     else:

@@ -2,7 +2,6 @@ Django
 google-generativeai
 httpcore
 httpx
-huggingface-hub
 joblib
 nltk
 numpy
@@ -14,11 +13,7 @@ python-dotenv
 pytz
 scikit-learn
 scipy
-sentence-transformers
-sentencepiece
-tensorflow-cpu
-torch
-transformers
 tzdata
 dj_database_url
+gunicorn
 

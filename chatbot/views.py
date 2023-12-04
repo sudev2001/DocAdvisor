@@ -1,4 +1,3 @@
-from sentence_transformers import SentenceTransformer, util
 import json
 import os
 import pandas as pd
@@ -27,6 +26,10 @@ def _user_id(request):
         user = request.session.create()
     return user
 
+def load_my_dataset():
+    data1 = DoctorDetails.objects.all()
+    data = pd.DataFrame.from_records(data1.values())
+    return data
 
 def Homepage(request):
     context = {
@@ -48,8 +51,14 @@ def review_entry(request):
             doctor_id = doctor.id
             Review.objects.create(department=department,
                                   doctor_id=doctor, review=review)
-            print(doctor_id, 'ididididid---->')
+            df1 = load_my_dataset()
+            df2 = df1[(df1.department == department) & (df1.hospital_name == doctor.hospital_name)]
+            print(df2.sort_values(by=['rank', 'experience'], ascending=[True, False]))
             sentiment_analysis_palm(doctor_id, review)
+            print('<<<--------------------------------->>>')
+            df1 = load_my_dataset()
+            df2 = df1[(df1.department == department) & (df1.hospital_name == doctor.hospital_name)]
+            print(df2.sort_values(by=['rank', 'experience'], ascending=[True, False]))
             messages.success(request, "Review added successfully")
             return redirect('Homepage')
         except:
@@ -227,14 +236,13 @@ def user_question(request):
     answer = request.POST.get('answer')
     user = _user_id(request)
 
-    data1 = DoctorDetails.objects.all()
-    data = pd.DataFrame.from_records(data1.values())
+    data = load_my_dataset()
 
-    if not question or question == 'Please enter the dept name properly.':
+    if not question or question.startswith("Sorry. I couldn't understand the dept."):
         response = find_department(answer, data, user)
         return JsonResponse({'response': response})
     elif question:
-        if question in ['If you require place, please enter the place else NO', 'Please enter the place properly.']:
+        if question == 'If you require place, please enter the place else NO' or question.startswith("Sorry. I couldn't understand the place."):
             response = find_place(answer, data, user)
             return JsonResponse({'response': response})
         elif question.startswith('If require hospital, please type hospital name') or question== 'Please enter the hospital name properly':
