@@ -15,7 +15,6 @@
   </div>
 
   <section id="billboard" class="overflow-hidden">
-
     <button class="button-prev">
       <i class="icon icon-chevron-left"></i>
     </button>
@@ -25,6 +24,7 @@
     <div class="swiper main-swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide" style="background-image: url('{% static "images/banner1.jpg" %}');background-repeat: no-repeat;background-size: cover;background-position: center;">
+          {% include "alerts.html" %}
           <div class="banner-content">
             <div class="container">
               <div class="row">

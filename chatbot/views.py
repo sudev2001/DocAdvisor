@@ -32,11 +32,16 @@ def load_my_dataset():
     return data
 
 def Homepage(request):
+    
     context = {
         'departments': DoctorDetails.objects.values_list('department', flat=True).distinct()
     }
     return render(request, 'Homepage.html', context)
 
+
+from django.contrib import messages
+from django.shortcuts import redirect, render
+from django.urls import reverse
 
 def review_entry(request):
     if request.method == 'POST':
@@ -49,18 +54,14 @@ def review_entry(request):
         try:
             doctor = DoctorDetails.objects.get(doctorname=doctorname)
             doctor_id = doctor.id
-            Review.objects.create(department=department,
-                                  doctor_id=doctor, review=review)
+            Review.objects.create(department=department, doctor_id=doctor, review=review)
             df1 = load_my_dataset()
             df2 = df1[(df1.department == department) & (df1.hospital_name == doctor.hospital_name)]
-            print(df2.sort_values(by=['rank', 'experience'], ascending=[True, False]))
             sentiment_analysis_palm(doctor_id, review)
-            print('<<<--------------------------------->>>')
             df1 = load_my_dataset()
             df2 = df1[(df1.department == department) & (df1.hospital_name == doctor.hospital_name)]
-            print(df2.sort_values(by=['rank', 'experience'], ascending=[True, False]))
             messages.success(request, "Review added successfully")
-            return redirect('Homepage')
+            return redirect(reverse('Homepage') + '?success=1')  # Redirect to homepage with success query parameter
         except:
             messages.error(request, "Something went wrong")
             return redirect('review_entry')
@@ -68,6 +69,7 @@ def review_entry(request):
         'departments': DoctorDetails.objects.values_list('department', flat=True).distinct()
     }
     return render(request, 'review_form.html', context)
+
 
 
 def get_doctors_by_department(request):
@@ -168,8 +170,9 @@ def sentiment_analysis_palm(id, review):
         temperature=0.0,
         max_output_tokens=1600,
         candidate_count=1)
+    print(completion.result)
     result = int(completion.result)
-    print(result, '____sudev____')
+    print(result)
     try:
         doc = DoctorDetails.objects.get(id=id)
 
@@ -232,7 +235,6 @@ def sentiment_analysis_palm(id, review):
 @csrf_exempt
 def user_question(request):
     question = request.POST.get('question')
-    print(question)
     answer = request.POST.get('answer')
     user = _user_id(request)
 
@@ -266,5 +268,4 @@ def get_doctor_details(request, id):
 
     # Access the fields dictionary
     fields = data[0]['fields']
-    # print(fields)
     return JsonResponse({'doctor': fields}, safe=False)

@@ -137,6 +137,12 @@
   .msg-self .timestamp {
     text-align: right;
   }
+  .modal-dialog.modal-dialog-centered {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
 </style>
 
 <section class="chatbox">
@@ -294,9 +300,9 @@
                 'aria-labelledby': 'doctorModalLabel',
                 'aria-hidden': 'true'
             });
-            
-            var modalDialog = $('<div>', { 'class': 'modal-dialog', 'role': 'document' });
-            var modalContent = $('<div>', { 'class': 'modal-content' });
+
+            var modalDialog = $('<div>', { 'class': 'modal-dialog modal-dialog-centered', 'role': 'document' });
+            var modalContent = $('<div>', { 'class': 'modal-content', 'text-align':'center'});
             
             var modalHeader = $('<div>', { 'class': 'modal-header' });
             modalHeader.append($('<h5>', { 'class': 'modal-title', 'id': 'doctorModalLabel' }).text('Doctor Details'));
@@ -310,16 +316,7 @@
             modalBody.append($('<p>').text('Hospital: ').append($('<span>', { 'id': 'modalHospital' })));
             modalBody.append($('<p>').text('Contact No: ').append($('<span>', { 'id': 'modalContact' })));
             
-            var modalFooter = $('<div>', { 'class': 'modal-footer' });
-            var closeModalButton = $('<button>', {
-                'type': 'button',
-                'class': 'btn btn-secondary',
-                'data-dismiss': 'modal'
-            }).text('Close');
-            
-            modalFooter.append(closeModalButton);
-            
-            modalContent.append(modalHeader, modalBody, modalFooter);
+            modalContent.append(modalHeader, modalBody);
             modalDialog.append(modalContent);
             modal.append(modalDialog);
             

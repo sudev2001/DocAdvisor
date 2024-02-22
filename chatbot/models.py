@@ -22,8 +22,8 @@ class Review(models.Model):
     review = models.TextField(null=True,blank=True)
 
 class MultipleDoctors(models.Model):
-    user = models.CharField(max_length=255)
-    department = models.CharField(max_length=255)
+    user = models.CharField(max_length=255, null=True, blank=True)
+    department = models.CharField(max_length=255, null=True, blank=True)
     place = models.CharField(max_length=100, null=True, blank=True)
     hospital_name = models.CharField(max_length=100, null=True, blank=True)
     experience = models.PositiveBigIntegerField(null=True, blank=True)
