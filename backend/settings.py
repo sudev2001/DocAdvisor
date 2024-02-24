@@ -96,16 +96,16 @@ dbHost = os.environ.get('dbHost')
 
 # Aws configuration
 
-DATABASES = {
-   			'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'myproject',
-            'USER': 'myprojectuser',
-            'PASSWORD': 'password',
-            'HOST': 'localhost',
-            'PORT': '',
-            }
-		}
+# DATABASES = {
+#    			'default': {
+#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#             'NAME': 'myproject',
+#             'USER': 'myprojectuser',
+#             'PASSWORD': 'password',
+#             'HOST': 'localhost',
+#             'PORT': '',
+#             }
+# 		}
 # Parse database configuration from $DATABASE_URL
 # DATABASES = {
 #     'default': dj_database_url.config(
@@ -152,6 +152,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS= [
     os.path.join(BASE_DIR / 'static')
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # settings.py
 
