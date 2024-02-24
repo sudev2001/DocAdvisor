@@ -77,35 +77,35 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-# dbPassword = os.environ.get('dbPassword')
-# dbUser = os.environ.get('dbUser')
-# dbName = os.environ.get('dbName')
-# dbHost = os.environ.get('dbHost')
+dbPassword = os.environ.get('dbPassword')
+dbUser = os.environ.get('dbUser')
+dbName = os.environ.get('dbName')
+dbHost = os.environ.get('dbHost')
 
-# DATABASES = {
-# 'default': {
-#     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#     'NAME':dbName ,
-#     'USER':dbUser ,
-#     'PASSWORD': dbPassword,
-#     'HOST': dbHost,
-#     'PORT': '5432',
-#   }
-# }
+DATABASES = {
+'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME':dbName ,
+    'USER':dbUser ,
+    'PASSWORD': dbPassword,
+    'HOST': dbHost,
+    'PORT': '5432',
+  }
+}
 
 
 # Aws configuration
 
-DATABASES = {
-   			'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'myproject',
-            'USER': 'myprojectuser',
-            'PASSWORD': 'password',
-            'HOST': 'localhost',
-            'PORT': '',
-            }
-		}
+# DATABASES = {
+#    			'default': {
+#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#             'NAME': 'myproject',
+#             'USER': 'myprojectuser',
+#             'PASSWORD': 'password',
+#             'HOST': 'localhost',
+#             'PORT': '',
+#             }
+# 		}
 # Parse database configuration from $DATABASE_URL
 # DATABASES = {
 #     'default': dj_database_url.config(
@@ -148,16 +148,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-# STATIC_URL = 'static/'
-# STATICFILES_DIRS= [
-#     os.path.join(BASE_DIR / 'static')
-# ]
+STATIC_URL = '/static/'
+STATICFILES_DIRS= [
+    os.path.join(BASE_DIR / 'static')
+]
 
 # settings.py
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
