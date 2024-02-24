@@ -1,4 +1,4 @@
-Unnamed: 0,doctor_name,department,experience,place,hospital_name,contact_number,positive_count,negative_count,neutral_count,total_reviews,rank_math,rank
+,Doctor Name,Department,Experience,Place,Hospital Name,Contact Number,positive_count,negative_count,neutral_count,total_reviews,rank_math,Rank
 0,David Chavez,Cardiology,3,Ernakulam,Jubilee Mission,+91-9507604768,63,69,41,173,-0.0346820809248554,5
 1,Nicole Pham,Ortho,2,Ernakulam,Nayara,+91-1614187441,74,66,34,174,0.0459770114942528,5
 2,Maria Proctor,Ortho,5,Ernakulam,Jubilee Mission,+91-8452225935,70,62,35,167,0.0479041916167664,5
