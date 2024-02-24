@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-dbPassword = os.environ.get('dbPassword')
-dbUser = os.environ.get('dbUser')
-dbName = os.environ.get('dbName')
-dbHost = os.environ.get('dbHost')
+# dbPassword = os.environ.get('dbPassword')
+# dbUser = os.environ.get('dbUser')
+# dbName = os.environ.get('dbName')
+# dbHost = os.environ.get('dbHost')
 
 # DATABASES = {
 # 'default': {
@@ -93,12 +93,25 @@ dbHost = os.environ.get('dbHost')
 #   }
 # }
 
-# Parse database configuration from $DATABASE_URL
+
+# Aws configuration
+
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL')
-    )
-}
+   			'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'myproject',
+            'USER': 'myprojectuser',
+            'PASSWORD': 'password',
+            'HOST': 'localhost',
+            'PORT': '',
+            }
+		}
+# Parse database configuration from $DATABASE_URL
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=os.environ.get('DATABASE_URL')
+#     )
+# }
 
 
 # Password validation
