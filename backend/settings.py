@@ -82,30 +82,30 @@ dbUser = os.environ.get('dbUser')
 dbName = os.environ.get('dbName')
 dbHost = os.environ.get('dbHost')
 
-DATABASES = {
-'default': {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME':dbName ,
-    'USER':dbUser ,
-    'PASSWORD': dbPassword,
-    'HOST': dbHost,
-    'PORT': '5432',
-  }
-}
+# DATABASES = {
+# 'default': {
+#     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#     'NAME':dbName ,
+#     'USER':dbUser ,
+#     'PASSWORD': dbPassword,
+#     'HOST': dbHost,
+#     'PORT': '5432',
+#   }
+# }
 
 
 # Aws configuration
 
-# DATABASES = {
-#    			'default': {
-#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#             'NAME': 'myproject',
-#             'USER': 'myprojectuser',
-#             'PASSWORD': 'password',
-#             'HOST': 'localhost',
-#             'PORT': '',
-#             }
-# 		}
+DATABASES = {
+   			'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'myproject',
+            'USER': 'myprojectuser',
+            'PASSWORD': 'password',
+            'HOST': 'localhost',
+            'PORT': '',
+            }
+		}
 # Parse database configuration from $DATABASE_URL
 # DATABASES = {
 #     'default': dj_database_url.config(
